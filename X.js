@@ -31,7 +31,9 @@
 	var Events = {
 		on: function ( event, callback ) {
 			callback = callback || function() {};
-			$(this).on(event, callback);
+			$(this).on(event, function () {
+				return callback;
+			});
 		},
 		trigger: function ( event, callback ) {
 			callback = callback || function() {};
@@ -52,13 +54,11 @@
 
 		this.data = $.extend({}, data);
 
-		this.updated = this.updated || function() {};
+		this.fetched = this.fetched || function() {};
 		this.created = this.created || function() {};
 
-		Events.on.call(this, 'fetched', this.updated);
-		Events.on.call(this, 'created', function() {
-			return this.created;
-		});
+		Events.on.call(this, 'fetched', this.fetched);
+		Events.on.call(this, 'created', this.created);
 	};
 
 	// Attach all inheritable methods to the Model prototype.
