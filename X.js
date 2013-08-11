@@ -42,7 +42,8 @@
 		on: function ( event, callback ) {
 			return $(this).on(event);
 		},
-		trigger: function ( event ) {
+		trigger: function ( event, message ) {
+			if ( event === 'error' && message ) throw new Error( message );
 			return $(this).trigger( event );
 		}
 	};
@@ -84,7 +85,7 @@
 			var model = this;
 
 			if ( !model.data.id ) {
-				model.trigger('error');
+				model.trigger('error', 'This model does not have an ID');
 				return;
 			}
 
@@ -105,7 +106,7 @@
 					if (callback) callback.call( model, res );
 					model.trigger('fetched');
 				} else {
-					model.trigger('error');
+					model.trigger('error', 'No response was returned');
 				}
 			}
 
