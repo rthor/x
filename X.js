@@ -67,11 +67,9 @@
 			var model = this;
 
 			function success ( res ) {
-				if (!res) return;
 				if (model.format) res = model.format( res );
-				model.data = $.extend(model.data, res, true);
+				if (callback) callback.call( model, res );
 				model.trigger('created');
-				if (callback) callback.call( model );
 			}
 
 			Helper.create( model.url, model.data ).then( success );
@@ -80,11 +78,14 @@
 			var model = this;
 
 			function success ( res ) {
-				if (!res) return;
-				if (model.format) res = model.format( res );
-				model.data = $.extend(model.data, res, true);
-				model.trigger('fetched');
-				if (callback) callback.call( model );
+				if (res) {
+					if (model.format) res = model.format( res );
+					model.data = $.extend(model.data, res, true);
+					if (callback) callback.call( model, res );
+					model.trigger('fetched');
+				} else {
+					model.trigger('error');
+				}
 			}
 
 			Helper.fetch( model.url ).then( success );
