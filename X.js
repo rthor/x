@@ -33,7 +33,7 @@
 			return $(this).on(event);
 		},
 		trigger: function ( event ) {
-			$(this).trigger( event );
+			return $(this).trigger( event );
 		}
 	};
 
