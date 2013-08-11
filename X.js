@@ -33,10 +33,6 @@
 			callback = callback || function() {};
 			$(this).on(event, callback);
 		},
-		sync: function ( callback ) {
-			callback = callback || function() {};
-			Events.on.call(this, 'sync', callback);
-		},
 		trigger: function ( event, callback ) {
 			callback = callback || function() {};
 			$(this).trigger( event, callback );
@@ -55,8 +51,14 @@
 		}
 
 		this.data = $.extend({}, data);
-		Events.sync.call(this, (this.updated || function() {}));
-		Events.on.call(this, 'created', (this.created || function() {}));
+
+		this.updated = this.updated || function() {};
+		this.created = this.created || function() {};
+
+		Events.on.call(this, 'fetched', this.updated);
+		Events.on.call(this, 'created', function() {
+			return this.created;
+		});
 	};
 
 	// Attach all inheritable methods to the Model prototype.
@@ -81,7 +83,7 @@
 				if (!res) return;
 				if (model.format) res = model.format( res );
 				model.data = $.extend(model.data, res, true);
-				model.trigger('sync');
+				model.trigger('fetched');
 				if (callback) callback.call( model );
 			}
 
