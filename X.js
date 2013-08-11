@@ -14,6 +14,16 @@
 				delete data[ func ];
 			}
 		},
+		destroy: function ( url, id ) {
+			id = id || 1;
+			return $.ajax({
+				url: url,
+				method: 'delete',
+				data: {
+					id: id
+				}
+			}).promise();
+		},
 		create: function ( url, data ) {
 			data = data || {};
 			return $.ajax({
@@ -69,6 +79,21 @@
 			}
 
 			Helper.create( model.url, model.data ).then( success );
+		},
+		destroy: function ( callback ) {
+			var model = this;
+
+			if ( !model.data.id ) {
+				model.trigger('error');
+				return;
+			}
+
+			function success ( res ) {
+				console.log( res );
+				model.trigger('destroyed');
+			}
+
+			Helper.destroy( '/', model.data.id ).then( success );
 		},
 		fetch: function ( callback ) {
 			var model = this;
