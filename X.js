@@ -26,10 +26,10 @@
 				method: 'delete'
 			}).promise();
 		},
-		create: function ( model ) {
+		save: function ( model, method ) {
 			return $.ajax({
 				url: Helper.restfulUrl( model ),
-				method: 'post',
+				method: method,
 				data: model.data || {}
 			}).promise();
 		},
@@ -79,9 +79,11 @@
 
 		this.fetched = this.fetched || function() {};
 		this.created = this.created || function() {};
+		this.updated = this.updated || function() {};
 
 		Events.on.call(this, 'fetched');
 		Events.on.call(this, 'created');
+		Events.on.call(this, 'updated');
 	};
 
 	// Attach all inheritable methods to the Model prototype.
@@ -95,7 +97,7 @@
 				model.trigger('created');
 			}
 
-			Helper.create( model ).then( success );
+			Helper.save( model, 'post' ).then( success );
 		},
 		destroy: function ( callback ) {
 			var model = this;
@@ -127,6 +129,22 @@
 			}
 
 			Helper.fetch( model ).then( success );
+		},
+		update: function ( callback ) {
+			var model = this;
+
+			if ( !model.id ) {
+				model.trigger('error', 'This model does not have an ID');
+				return;
+			}
+
+			function success ( res ) {
+				if (model.format) res = model.format( res );
+				if (callback) callback.call( model, res );
+				model.trigger('updated');
+			}
+
+			Helper.save( model, 'put' ).then( success );
 		}
 	});
 
