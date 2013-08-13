@@ -145,8 +145,52 @@
 		}
 	});
 
+	// Collections
+	var Collection = X.Collection = function ( model, data ) {
+		data = data || {};
+		model = model || Model;
+
+		this.list = [];
+
+		for ( var key in data ) {
+			Helper.abstract.call( this, key, data );
+		}
+
+		this.model = model;
+	};
+
+	// Attach all inheritable methods to the Collection prototype.
+	$.extend(Collection.prototype, Events, {
+		add: function ( item ) {
+			return this.list.push(item);
+		},
+		count: function() {
+			return this.list.length;
+		},
+		fetch: function ( callback ) {
+			var collection = this;
+
+			function success ( res ) {
+				if (res) {
+					if (collection.format) res = collection.format( res );
+
+					for (var i = 0; i < res.length; i++) {
+						collection.add( new collection.model( res[i] ) );
+					}
+
+					if (callback) callback.call( collection, res );
+					collection.trigger('fetched');
+				} else {
+					collection.trigger('error', 'No response was returned');
+				}
+			}
+
+			Helper.fetch( collection ).then( success );
+		}
+	});
+
 	// Backbone extend method borrowed and modified.
-	Model.extend = function(protoProps, staticProps) {
+	Model.extend = Collection.extend = function(protoProps, staticProps) {
 		var parent = this;
 		var Surrogate;
 		var child = (protoProps && protoProps.hasOwnProperty('constructor')) ?
