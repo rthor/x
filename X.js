@@ -26,12 +26,11 @@
 				method: 'delete'
 			}).promise();
 		},
-		create: function ( url, data ) {
-			data = data || {};
+		create: function ( model ) {
 			return $.ajax({
-				url: url,
+				url: Helper.restfulUrl( model ),
 				method: 'post',
-				data: data
+				data: model.data || {}
 			}).promise();
 		},
 		fetch: function ( model ) {
@@ -96,7 +95,7 @@
 				model.trigger('created');
 			}
 
-			Helper.create( model.url, model.data ).then( success );
+			Helper.create( model ).then( success );
 		},
 		destroy: function ( callback ) {
 			var model = this;
