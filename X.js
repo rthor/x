@@ -146,17 +146,15 @@
 	});
 
 	// Collections
-	var Collection = X.Collection = function ( model, data ) {
+	var Collection = X.Collection = function ( data ) {
 		data = data || {};
-		model = model || Model;
-
-		this.list = [];
 
 		for ( var key in data ) {
 			Helper.abstract.call( this, key, data );
 		}
 
-		this.model = model;
+		this.list = [];
+		this.model = Model;
 	};
 
 	// Attach all inheritable methods to the Collection prototype.
