@@ -6,6 +6,9 @@
 	// be attached to this. Exported for both the browser and the server.
 	var X = typeof exports !== 'undefined' ? exports : root.X = {};
 
+	// Current version.
+	X.Version = 'b0.0.1';
+
 	// Create private helper object.
 	var Helper = {
 		abstract: function ( func, data ) {
