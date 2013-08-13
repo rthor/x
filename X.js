@@ -9,10 +9,13 @@
 	// Current version.
 	X.Version = 'b0.0.1';
 
+	// Use restful routes.
+	X.restful = true;
+
 	// Create private helper object.
 	var Helper = {
 		abstract: function ( func, data ) {
-			if ( data[ func ] ) {
+			if ( typeof data[ func ] !== 'undefined' ) {
 				this[ func ] = data[ func ];
 				delete data[ func ];
 			}
@@ -35,8 +38,19 @@
 				data: data
 			}).promise();
 		},
-		fetch: function ( url ) {
-			return $.ajax({ url: url }).promise();
+		fetch: function ( model ) {
+			return $.ajax({
+				url: Helper.restfulUrl( model )
+			}).promise();
+		},
+		restfulUrl: function ( model ) {
+			var url = model.url,
+				id = model.data.id;
+
+			if ( id && model.restful ) url = url + '/' + id;
+			else if ( id ) url = url + '?id=' + id;
+
+			return url;
 		}
 	};
 
@@ -55,9 +69,12 @@
 	var Model = X.Model = function ( data ) {
 		data = data || {};
 
+		this.restful = X.restful;
+
 		for ( var key in data ) if (
 			typeof data[ key ] === 'function' ||
-			key === 'url'
+			key === 'url' ||
+			key === 'restful'
 		) {
 			Helper.abstract.call( this, key, data );
 		}
@@ -113,7 +130,7 @@
 				}
 			}
 
-			Helper.fetch( model.url ).then( success );
+			Helper.fetch( model ).then( success );
 		}
 	});
 
