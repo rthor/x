@@ -175,6 +175,7 @@
 					if (collection.format) res = collection.format( res );
 
 					for (var i = 0; i < res.length; i++) {
+						res[i].url = collection.url;
 						collection.add( new collection.model( res[i] ) );
 					}
 
