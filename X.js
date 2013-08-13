@@ -192,6 +192,13 @@
 			}
 
 			Helper.fetch( collection ).then( success );
+		},
+		each: function( callback ) {
+			var i = 0;
+
+			for (; i < this.count(); i++) {
+				callback( this.list[ i ], i );
+			}
 		}
 	});
 
