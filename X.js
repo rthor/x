@@ -77,13 +77,10 @@
 
 		this.data = $.extend({}, data);
 
-		this.fetched = this.fetched || function() {};
-		this.created = this.created || function() {};
-		this.updated = this.updated || function() {};
-
-		Events.on.call(this, 'fetched');
-		Events.on.call(this, 'created');
-		Events.on.call(this, 'updated');
+		if (this.created) Events.on.call(this, 'created');
+		if (this.deleted) Events.on.call(this, 'deleted');
+		if (this.fetched) Events.on.call(this, 'fetched');
+		if (this.updated) Events.on.call(this, 'updated');
 	};
 
 	// Attach all inheritable methods to the Model prototype.
