@@ -130,6 +130,10 @@
 		get: function ( key ) {
 			return this.data[ key ];
 		},
+		set: function ( key, value ) {
+			this.data[ key ] = value;
+			return this.data[ key ];
+		},
 		update: function ( callback ) {
 			var model = this;
 
