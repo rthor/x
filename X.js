@@ -127,6 +127,9 @@
 
 			Helper.fetch( model ).then( success );
 		},
+		get: function ( key ) {
+			return this.data[ key ];
+		},
 		update: function ( callback ) {
 			var model = this;
 
