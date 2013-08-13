@@ -20,14 +20,10 @@
 				delete data[ func ];
 			}
 		},
-		destroy: function ( url, id ) {
-			id = id || 1;
+		destroy: function ( model ) {
 			return $.ajax({
-				url: url,
-				method: 'delete',
-				data: {
-					id: id
-				}
+				url: Helper.restfulUrl( model ),
+				method: 'delete'
 			}).promise();
 		},
 		create: function ( url, data ) {
@@ -45,7 +41,7 @@
 		},
 		restfulUrl: function ( model ) {
 			var url = model.url,
-				id = model.data.id;
+				id = model.id;
 
 			if ( id && model.restful ) url = url + '/' + id;
 			else if ( id ) url = url + '?id=' + id;
@@ -74,7 +70,8 @@
 		for ( var key in data ) if (
 			typeof data[ key ] === 'function' ||
 			key === 'url' ||
-			key === 'restful'
+			key === 'restful' ||
+			key === 'id'
 		) {
 			Helper.abstract.call( this, key, data );
 		}
@@ -104,7 +101,7 @@
 		destroy: function ( callback ) {
 			var model = this;
 
-			if ( !model.data.id ) {
+			if ( !model.id ) {
 				model.trigger('error', 'This model does not have an ID');
 				return;
 			}
@@ -114,7 +111,7 @@
 				model.trigger('destroyed');
 			}
 
-			Helper.destroy( '/', model.data.id ).then( success );
+			Helper.destroy( model ).then( success );
 		},
 		fetch: function ( callback ) {
 			var model = this;
