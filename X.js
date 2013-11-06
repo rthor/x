@@ -162,6 +162,10 @@
 
 		this.list = [];
 		this.model = Model;
+
+		Events.on.call(this, function() {
+			this.count = this.count();
+		});
 	};
 
 	// Attach all inheritable methods to the Collection prototype.
@@ -195,7 +199,6 @@
 		},
 		each: function( callback ) {
 			var i = 0;
-
 			for (; i < this.count(); i++) {
 				callback( this.list[ i ], i );
 			}

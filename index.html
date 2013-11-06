@@ -9,26 +9,17 @@
     </head>
     <body>
         <ul class="list"></ul>
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="X.js"></script>
         <script>
-
         new X.Collection({
             url: 'http://apis.is/flight?language=en&type=arrivals',
-            fetched: function() { addToView( this ); },
             format: function ( res ) { return res.results; }
-        }).fetch();
-
-        function addToView ( flights ) {
-            $('.list').before([
-                '<h1>Count of flights: ' + flights.count() + '</h1>',
-                '<p>Sótt af: <a href="' + flights.url + '">' + flights.url + '</a></p>'
-            ].join(''));
-            flights.each(function( flight ) {
-                $('.list').append('<li>' + flight.get('date') + ' - ' + flight.get('to') + '</li>');
-            });
-        }
-
+        }).fetch(function () {
+            console.log( this );
+        });
         </script>
     </body>
 </html>
