@@ -210,21 +210,4 @@
 			return _.pluck(_.map(this.list, function(obj) { return obj.data; }), key );
 		}
 	});
-
-	// Backbone extend method borrowed and modified.
-	Model.extend = Collection.extend = function(protoProps, staticProps) {
-		var parent = this;
-		var Surrogate;
-		var child = (protoProps && protoProps.hasOwnProperty('constructor')) ?
-			protoProps.constructor : function () {
-				return parent.apply(this, arguments);
-			};
-		$.extend(child, parent, staticProps);
-		Surrogate = function(){ this.constructor = child; };
-		Surrogate.prototype = parent.prototype;
-		child.prototype = new Surrogate;
-		if (protoProps) $.extend(child.prototype, protoProps);
-		child.__super__ = parent.prototype;
-		return child;
-	};
 })();
