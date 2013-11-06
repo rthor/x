@@ -207,7 +207,8 @@
 			return _.filter(this.list, callback);
 		},
 		getAll: function ( key ) {
-			return _.pluck(_.map(this.list, function(obj) { return obj.data; }), key );
+			var list = _.map(this.list, function(obj) { return obj.data; });
+			return key ? _.pluck(list, key) : list;
 		}
 	});
 })();
