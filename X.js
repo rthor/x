@@ -176,6 +176,12 @@
 		count: function() {
 			return this.list.length;
 		},
+		each: function( callback ) {
+			var i = 0;
+			for (; i < this.count(); i++) {
+				callback( this.list[ i ], i );
+			}
+		},
 		fetch: function ( callback ) {
 			var collection = this;
 
@@ -199,12 +205,6 @@
 		},
 		filter: function ( callback ) {
 			return _.filter(this.list, callback);
-		},
-		each: function( callback ) {
-			var i = 0;
-			for (; i < this.count(); i++) {
-				callback( this.list[ i ], i );
-			}
 		}
 	});
 
