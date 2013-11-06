@@ -52,7 +52,7 @@
 	// Simplify event handling.
 	var Events = {
 		on: function ( event, callback ) {
-			return $(this).on(event);
+			return this;
 		},
 		trigger: function ( event, message ) {
 			if ( event === 'error' && message ) throw new Error( message );
@@ -162,6 +162,8 @@
 
 		this.list = [];
 		this.model = Model;
+
+		if (this.fetched) Events.on.call(this, 'fetched', 'fetched');
 
 		Events.on.call(this, function() {
 			this.count = this.count();
