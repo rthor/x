@@ -39,11 +39,19 @@
 			}).promise();
 		},
 		restfulUrl: function ( model ) {
-			var url = model.url,
+			var base = model.baseURL,
+				url = model.url,
 				id = model.id;
 
-			if ( id && model.restful ) url = url + '/' + id;
-			else if ( id ) url = url + '?id=' + id;
+			// Use baseURL when appreciate
+			if ( /^@/.test(url) ) {
+				base = base.replace(/\/$/, '') + '/';
+				url = url.replace(/^@/, base);
+			}
+
+			// Use correct urls
+			if ( id && model.restful ) url += '/' + id;
+			else if ( id ) url += '?id=' + id;
 
 			return url;
 		}
@@ -162,6 +170,8 @@
 
 		this.list = [];
 		this.model = Model;
+
+		this.baseURL = X.baseURL || '';
 
 		if (this.fetched) Events.on.call(this, 'fetched', 'fetched');
 
