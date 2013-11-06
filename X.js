@@ -205,6 +205,9 @@
 		},
 		filter: function ( callback ) {
 			return _.filter(this.list, callback);
+		},
+		getAll: function ( key ) {
+			return _.pluck(_.map(this.list, function(obj) { return obj.data; }), key );
 		}
 	});
 
