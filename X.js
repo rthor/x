@@ -197,6 +197,9 @@
 
 			Helper.fetch( collection ).then( success );
 		},
+		filter: function ( callback ) {
+			return _.filter(this.list, callback);
+		},
 		each: function( callback ) {
 			var i = 0;
 			for (; i < this.count(); i++) {
