@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         uglify: {
             build: {
-                files: { 'x.min.js': ['x.js'] }
+                files: { 'build/x.min.js': ['build/x.js'] }
             }
         }
     });
