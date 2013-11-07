@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>X.js</title>
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="X.js"></script>
+        <script>
+            // Base url for all endpoints
+            X.baseURL = 'http://apis.is';
+
+            // A simple collection of currencies from M5
+            var Currency = new X.Collection({
+                // The endpoint
+                url: '@currency/m5',
+                // Format and sort the response by its value
+                format: function( res ) {
+                    return _.sortBy(res.results, function (currency) { return currency.value; });
+                }
+            });
+
+            // Function to populate #main
+            function displayCurrencyInfo ( currency, indx ) {
+                var view = '<p>'+indx+': '+currency.get('longName')+' ('+currency.get('shortName')+') = '+currency.get('value')+'</p>';
+                $('#main').append( view );
+            }
+
+            // Fetch currencies
+            Currency.fetch(function() {
+                // Create a basic heading
+                $('#main').html( '<h2>Currencies sorted by value (results ' + this.count() + ')</h2>' );
+                // Loop through the collection and use the displayCurrencyInfo function
+                this.each(displayCurrencyInfo);
+            });
+        </script>
+    </body>
+</html>
