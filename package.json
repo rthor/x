@@ -1,0 +1,17 @@
+{
+  "name": "x-js",
+  "version": "0.0.1",
+  "description": "An insanly small mv*!",
+  "license": "MIT",
+  "homepage": "http://github.com/rthor/x",
+  "author": {
+    "name": "Ragnar Þór Valgeirsson",
+    "email": "ragnar.valgeirsson@gmail.com",
+    "url": "http://rthor.is"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "matchdep": "*",
+    "grunt-contrib-uglify": "*"
+  }
+}
