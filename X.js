@@ -43,13 +43,11 @@
 				url = model.url,
 				id = model.id;
 
-			// Use baseURL when appreciate
 			if ( /^@/.test(url) ) {
 				base = base.replace(/\/$/, '') + '/';
 				url = url.replace(/^@/, base);
 			}
 
-			// Use correct urls
 			if ( id && model.restful ) url += '/' + id;
 			else if ( id ) url += '?id=' + id;
 
