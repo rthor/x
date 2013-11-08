@@ -1,14 +1,20 @@
 {
   "name": "x-js",
   "version": "0.0.1",
-  "description": "An insanly small mv*!",
+  "description": "An insanely small mv*!",
   "license": "MIT",
   "homepage": "http://github.com/rthor/x",
   "author": {
-    "name": "Ragnar Þór Valgeirsson",
+    "name": "Ragnar Þór Valgeirsson (rthor)",
     "email": "ragnar.valgeirsson@gmail.com",
     "url": "http://rthor.is"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rthor/x.git"
+  },
+  "main": "build/x.js",
+  "readmeFilename": "README.md",
   "devDependencies": {
     "grunt": "*",
     "matchdep": "*",
