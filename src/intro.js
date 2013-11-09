@@ -6,7 +6,7 @@ var root = this;
 var X = typeof exports !== 'undefined' ? exports : root.X = {};
 
 // Current version.
-X.Version = 'b0.0.1';
+X.Version = '0.0.2';
 
 // Use restful routes.
 X.restful = true;
