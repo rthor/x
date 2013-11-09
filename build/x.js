@@ -1,3 +1,12 @@
+/**
+ * X.js - 0.0.1
+ * An insanely small mv*!
+ * http://github.com/rthor/x
+ *
+ * Licensed under the MIT license.
+ * Copyright (c) 2013 Ragnar Þór Valgeirsson (rthor)
+ * http://rthor.is
+ */
 (function() {
 	// Save a reference to the global object (`window` in the browser, `exports' on the server).
 	var root = this;
