@@ -28,6 +28,12 @@ var X = require('x-js');
 
 Hopefully coming soon...
 
+## Changelog
+
+### 0.0.3 *NOV 11, 2013*
+
+- Tests are being slowly implemented
+
 ## Get in touch
 
 Follow me on twitter [@rthor](http://twitter.com/rthor) or send me a line in an [email](mailto:ragnar.valgeirsson@gmail.com).
