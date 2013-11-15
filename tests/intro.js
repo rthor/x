@@ -1,4 +1,6 @@
-chai.should();
+var chai  = require('chai'),
+	should = chai.should(),
+	X = require('../build/x');
 
 describe("X", function() {
 	it("Should be an Object", function() {

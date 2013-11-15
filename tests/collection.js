@@ -1,4 +1,7 @@
-chai.should();
+var chai  = require('chai'),
+	should = chai.should(),
+	X = require('../build/x');
+
 describe("Collection", function() {
 	var col = new X.Collection({
 		url: 'json/collection.json'

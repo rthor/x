@@ -1,4 +1,6 @@
-chai.should();
+var chai  = require('chai'),
+	should = chai.should(),
+	X = require('../build/x');
 
 describe("Model", function() {
 	var model = new X.Model();
