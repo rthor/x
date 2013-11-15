@@ -1,6 +1,6 @@
 var chai  = require('chai'),
 	should = chai.should(),
-	X = require('../build/x');
+	X = require('../build/x.npm');
 
 describe("Model", function() {
 	var model = new X.Model();

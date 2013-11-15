@@ -9,6 +9,15 @@ module.exports = function (grunt) {
 				' * <%= pkg.author.url %>\n' +
 				' */\n';
 
+	var files = [
+		'src/intro.js',
+		'src/helper.js',
+		'src/events.js',
+		'src/model.js',
+		'src/collection.js'
+	];
+
+
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -24,18 +33,12 @@ module.exports = function (grunt) {
 			}
 		},
 		concat: {
-			options: {
-				separator: '\n\n'
-			},
-			dist: {
+			basic: {
+				options: {
+					separator: '\n\n'
+				},
 				files: {
-					'build/x.js': [
-						'src/intro.js',
-						'src/helper.js',
-						'src/events.js',
-						'src/model.js',
-						'src/collection.js'
-					]
+					'build/x.js': files
 				}
 			}
 		},
@@ -50,12 +53,20 @@ module.exports = function (grunt) {
 			}
 		},
 		uglify: {
-			options: {
-				banner: banner
-			},
-			dist: {
+			basic: {
+				options: {
+					banner: banner
+				},
 				files: {
 					'build/x.min.js': 'build/x.js'
+				}
+			},
+			npm: {
+				options: {
+					banner: 'var $=require(\'jquery\'),_=require(\'underscore\');\n'
+				},
+				files: {
+					'build/x.npm.js': ['build/x.js']
 				}
 			}
 		}
@@ -68,5 +79,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-trimtrailingspaces');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	// Default task(s).
-	grunt.registerTask('default', ['concat', 'wrap', 'trimtrailingspaces', 'uglify', 'jshint']);
+	grunt.registerTask('default', [
+		'concat',
+		'wrap',
+		'trimtrailingspaces',
+		'uglify:basic',
+		'uglify:npm',
+		'jshint'
+	]);
 };

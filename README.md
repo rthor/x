@@ -19,8 +19,6 @@ $ npm install x-js
 Then to work with it:
 
 ```javascript
-var $ = require('jquery'); // Important!
-var _ = require('underscore'); // Optional but awesome...
 var X = require('x-js');
 ```
 

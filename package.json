@@ -15,6 +15,10 @@
   },
   "main": "build/x.js",
   "readmeFilename": "README.md",
+  "dependencies": {
+    "jquery": ">1.5",
+    "underscore": "*"
+  },
   "devDependencies": {
     "grunt": "*",
     "matchdep": "*",
@@ -24,9 +28,7 @@
     "grunt-trimtrailingspaces": "~0.3.2",
     "grunt-contrib-jshint": "~0.7.1",
     "mocha": "~1.14.0",
-    "chai": "~1.8.1",
-    "jquery": "~1.8.3",
-    "underscore": "~1.5.2"
+    "chai": "~1.8.1"
   },
   "scripts": {
     "test": "mocha -R spec tests/"
