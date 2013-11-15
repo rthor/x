@@ -30,7 +30,7 @@ Hopefully coming soon...
 
 ## Changelog
 
-### 0.0.4 *NOV 14, 2013*
+### 0.0.5 *NOV 14, 2013*
 
 - Remove need for requiring dependencies manually.
 

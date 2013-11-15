@@ -1,6 +1,6 @@
 {
   "name": "x-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simplify the process of working with data and client/server interaction.",
   "license": "MIT",
   "homepage": "http://github.com/rthor/x",
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git://github.com/rthor/x.git"
   },
-  "main": "build/x.js",
+  "main": "build/x.npm.js",
   "readmeFilename": "README.md",
   "dependencies": {
     "jquery": ">1.5",

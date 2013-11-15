@@ -1,5 +1,5 @@
 /**
- * X.js - 0.0.4
+ * X.js - 0.0.5
  * Simplify the process of working with data and client/server interaction.
  * http://github.com/rthor/x
  *
@@ -16,7 +16,7 @@
 	var X = typeof exports !== 'undefined' ? exports : root.X = {};
 
 	// Current version.
-	X.Version = '0.0.4';
+	X.Version = '0.0.5';
 
 	// Use restful routes.
 	X.restful = true;
