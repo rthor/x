@@ -1,6 +1,6 @@
 /**
- * X.js - 0.0.3
- * An insanely small mv*!
+ * X.js - 0.0.4
+ * Simplify the process of working with data and client/server interaction.
  * http://github.com/rthor/x
  *
  * Licensed under the MIT license.
@@ -16,7 +16,7 @@
 	var X = typeof exports !== 'undefined' ? exports : root.X = {};
 
 	// Current version.
-	X.Version = '0.0.3';
+	X.Version = '0.0.4';
 
 	// Use restful routes.
 	X.restful = true;
