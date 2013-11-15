@@ -1,7 +1,7 @@
 {
   "name": "x-js",
-  "version": "0.0.3",
-  "description": "An insanely small mv*!",
+  "version": "0.0.4",
+  "description": "Simplify the process of working with data and client/server interaction.",
   "license": "MIT",
   "homepage": "http://github.com/rthor/x",
   "author": {

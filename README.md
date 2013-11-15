@@ -1,6 +1,6 @@
 # X.js
 
-An insanely small mv* framework! It's meant to simplify the process of working with data and client/server interaction. Don't repeat yourself - be DRY!
+Meant to simplify the process of working with data and client/server interaction. Don't repeat yourself - be DRY!
 
 ## Installation
 
