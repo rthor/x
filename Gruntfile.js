@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 				' * <%= pkg.homepage %>\n' +
 				' *\n' +
 				' * Licensed under the MIT license.\n' +
-				' * Copyright (c) 2013 <%= pkg.author.name %>\n' +
+				' * Copyright (c) 2014 <%= pkg.author.name %>\n' +
 				' * <%= pkg.author.url %>\n' +
 				' */\n';
 

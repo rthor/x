@@ -1,10 +1,10 @@
 /**
- * X.js - 0.0.5
+ * X.js - 0.0.6
  * Simplify the process of working with data and client/server interaction.
  * http://github.com/rthor/x
  *
  * Licensed under the MIT license.
- * Copyright (c) 2013 Ragnar Þór Valgeirsson (rthor)
+ * Copyright (c) 2014 Ragnar Þór Valgeirsson (rthor)
  * http://rthor.is
  */
 (function() {
@@ -16,7 +16,7 @@
 	var X = typeof exports !== 'undefined' ? exports : root.X = {};
 
 	// Current version.
-	X.Version = '0.0.5';
+	X.Version = '0.0.6';
 
 	// Use restful routes.
 	X.restful = true;
