@@ -1,0 +1,29 @@
+{
+  "name": "x-js",
+  "version": "0.0.5",
+  "homepage": "https://github.com/rthor/x",
+  "author": {
+    "name": "Ragnar Þór Valgeirsson (rthor)",
+    "email": "ragnar.valgeirsson@gmail.com",
+    "url": "http://rthor.is"
+  },
+  "description": "Simplify the process of working with data and client/server interaction",
+  "main": "build/x.min.js",
+  "keywords": [
+    "restful",
+    "jquery",
+    "framework",
+    "mv*"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "build/x.npm.js",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">1.5",
+    "underscore": "*"
+  }
+}
