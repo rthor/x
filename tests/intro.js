@@ -1,6 +1,6 @@
 var chai  = require('chai'),
 	should = chai.should(),
-	X = require('../build/x.npm');
+	X = require('../build/x.test');
 
 describe("X", function() {
 	it("Should be an Object", function() {

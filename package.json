@@ -28,7 +28,8 @@
     "grunt-trimtrailingspaces": "~0.3.2",
     "grunt-contrib-jshint": "~0.7.1",
     "mocha": "~1.14.0",
-    "chai": "~1.8.1"
+    "chai": "~1.8.1",
+    "jsdom": "~0.10.5"
   },
   "scripts": {
     "test": "mocha -R spec tests/"

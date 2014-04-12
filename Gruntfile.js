@@ -17,7 +17,6 @@ module.exports = function (grunt) {
 		'src/collection.js'
 	];
 
-
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -63,10 +62,18 @@ module.exports = function (grunt) {
 			},
 			npm: {
 				options: {
-					banner: 'var $=require(\'jquery\'),_=require(\'underscore\');\n'
+					banner: 'var $=require(\'jquery/dist/jquery\')(window),_=require(\'underscore\');\n'
 				},
 				files: {
 					'build/x.npm.js': ['build/x.js']
+				}
+			},
+			test: {
+				options: {
+					banner: 'var $=require(\'jquery/dist/jquery\')(require("jsdom").jsdom().createWindow()),_=require(\'underscore\');\n'
+				},
+				files: {
+					'build/x.test.js': ['build/x.js']
 				}
 			}
 		}
@@ -85,6 +92,7 @@ module.exports = function (grunt) {
 		'trimtrailingspaces',
 		'uglify:basic',
 		'uglify:npm',
+		'uglify:test',
 		'jshint'
 	]);
 };
